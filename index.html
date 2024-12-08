@@ -1,15 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="stylesheet" href="styles.css" />
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <h1 class="title">Hello World</h1>
-        <div id="mainDiv">Hello Div</div>
-        <br />
-        <button onclick="buttonClicked()">Click me</button>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indeks Sekolah PPDB Provinsi Jawa Timur 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="slide" id="sidebar">
+            <h1>DASBOR</h1>
+            <button id="closeBtn" class="close-btn"><i class="fas fa-times"></i></button>
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tv"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> User</a></li>
+                <li><a href="#"><i class="fas fa-folder"></i> Folder</a></li>
+                <li><a href="#"><i class="fa fa-grip"></i> List</a></li>
+                <li><a href="#"><i class="fas fa-radio"></i> Status</a></li>
+                <li><a href="#"><i class="fas fa-comment"></i> Information</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Storage</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <button id="openBtn" class="open-btn"><i class="fas fa-bars"></i></button>
+            <h2>Welcome to the Dashboard</h2>
+
+            <!-- Data Summary Section -->
+            <div class="data-summary">
+                <div class="data-box">
+                    <h3>Indeks Sekolah</h3>
+                    <p>250</p>
+                </div>
+                <div class="data-box">
+                    <h3>SMP Terdata</h3>
+                    <p>150</p>
+                </div>
+                <div class="data-box">
+                    <h3>Lulusan 2024</h3>
+                    <p>4000</p>
+                </div>
+                <div class="data-box">
+                    <h3>Lulusan 2023</h3>
+                    <p>4500</p>
+                </div>
+                <div class="data-box">
+                    <h3>Lulusan 2022</h3>
+                    <p>5000</p>
+                </div>
+            </div>
+
+            <!-- Additional Data Sections -->
+            <div class="additional-data">
+                <div class="data-box">
+                    <h3>Jumlah Guru</h3>
+                    <p>1200</p>
+                </div>
+                <div class="data-box">
+                    <h3>Jumlah Sekolah</h3>
+                    <p>250</p>
+                </div>
+                <div class="data-box">
+                    <h3>Rata-rata Nilai Ujian</h3>
+                    <p>85%</p>
+                </div>
+                <div class="data-box">
+                    <h3>Pendaftar SMAN 2025</h3>
+                    <p>6000</p>
+                </div>
+                <div class="data-box">
+                    <h3>Siswa Lulus SMAN</h3>
+                    <p>4500</p>
+                </div>
+                <div class="data-box">
+                    <h3>Rata-rata Nilai SMP</h3>
+                    <p>75%</p>
+                </div>
+                <div class="data-box">
+                    <h3>Pendaftar SMKN</h3>
+                    <p>8000</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
