@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Siswa Lulusan</title>
+    <link rel="stylesheet" href="944.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js untuk grafik -->
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Detail Siswa Lulusan</h1>
+    </header>
+    <main class="dashboard-container">
+        <h2 id="school-name">SMP Negeri 1 Mojang Pusat</h2>
+        <h3 id="year-info">2024</h3>
+
+        <!-- Tabel Data Siswa -->
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Nama Siswa</th>
+                    <th>Pengetahuan Kemojangan</th>
+                    <th>Wawasan Kemojangan</th>
+                    <th>Keterampilan Kemojangan</th>
+                    <th>Jokes Kemojangan</th>
+                    <th>Rata-Rata</th>
+                    <th>Prestasi</th>
+                    <th>Ekstrakurikuler</th>
+                    <th>Nilai Ekstrakurikuler</th>
+                    <th>Akumulasi Nilai</th>
+                    <th>Diterima di SMAN</th>
+                </tr>
+            </thead>
+            <tbody id="studentData">
+                <!-- Data siswa akan dimuat di sini menggunakan JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Grafik Nilai Mata Ujian -->
+        <canvas id="scoresChart" width="400" height="200"></canvas>
+    </main>
+
+    <script>
+        // Mengambil parameter dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const school = urlParams.get('school');
+        const year = urlParams.get('year');
+
+        // Menampilkan nama sekolah dan tahun
+        document.getElementById('school-name').textContent = `Sekolah: ${school}`;
+        document.getElementById('year-info').textContent = `Tahun Lulusan: ${year}`;
+
+        // Contoh data siswa
+        const studentData = [
+            {
+                name: "Felistasya Anggrigardini Lilyac Nawasena",
+                pengetahuan: 98,
+                wawasan: 96,
+                keterampilan: 88,
+                jokes: 99,
+                prestasi: "Juara 1 Lomba Cerdas Cermat Floptmojang 2024, Juara 1 International Mojang Debate 2024, Juara 1 International Conference of Mojangnomics 2024 Norjang, Juara 1 Nasional Riset Pohon Mojang Kode Type A0304, Juara 1 Nasional Lomba Arsip Kebangsaan Floptropica, Juara 2 Nasional Lomba High Thinking Test (HTT) Mojang 2024, Juara 2 Nasional Lomba Mojangourism 2024, Juara 1 International Diplomatic Affairs of Mojang-Floptropicans MoU 2023 South Mojang, Juara 1 International Supply Chains Solving in International Problems of Food Estate 2023, Juara 1 Nasional Riset Pendidikan Mojang 2023",
+                ekstrakurikuler: "E-Mojang, Mojangmotion, Mojangpala, Mojangplants, Mojangnomics, Debate Mojang",
+                nilaiEkstrakurikuler: 98,
+                akumulasi: 97.66,
+                diterima: "SMAKN Unggulan Mojang Pusat"
+            },
+            {
+                name: "Budi Santoso",
+                pengetahuan: 80,
+                wawasan: 85,
+                keterampilan: 87,
+                jokes: 90,
+                prestasi: "Juara 2 Olimpiade Matematika",
+                ekstrakurikuler: "Basket, Sepak Bola",
+                nilaiEkstrakurikuler: 89,
+                akumulasi: 86,
+                diterima: "State International Mojang High Tech School"
+            }
+            // Tambahkan data siswa lainnya sesuai kebutuhan
+        ];
+
+        // Menampilkan data siswa dalam tabel
+        const studentTable = document.getElementById('studentData');
+        studentData.forEach(student => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${student.name}</td>
+                <td>${student.pengetahuan}</td>
+                <td>${student.wawasan}</td>
+                <td>${student.keterampilan}</td>
+                <td>${student.jokes}</td>
+                <td>${((student.pengetahuan + student.wawasan + student.keterampilan + student.jokes) / 4).toFixed(2)}</td>
+                <td>${student.prestasi}</td>
+                <td>${student.ekstrakurikuler}</td>
+                <td>${student.nilaiEkstrakurikuler}</td>
+                <td>${student.akumulasi}</td>
+                <td>${student.diterima}</td>
+            `;
+            studentTable.appendChild(row);
+        });
+
+        // Membuat grafik untuk nilai mata ujian
+        const ctx = document.getElementById('scoresChart').getContext('2d');
+        const scoresChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Pengetahuan Kemojangan', 'Wawasan Kemojangan', 'Keterampilan Kemojangan', 'Jokes Kemojangan'],
+                datasets: studentData.map(student => ({
+                    label: student.name,
+                    data: [student.pengetahuan, student.wawasan, student.keterampilan, student.jokes],
+                    borderWidth: 1
+                }))
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.dataset.label + ': ' + tooltipItem.raw + ' points';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
